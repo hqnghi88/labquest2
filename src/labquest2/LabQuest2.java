@@ -55,7 +55,7 @@ public class LabQuest2 {
 		JButton btnStartAnalysis = new JButton("Start Analysis");
 		btnStartAnalysis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new LineChartSample().;
+				new LineChartSample();
 			}
 		});
 		frame.getContentPane().add(btnStartAnalysis, "cell 0 0");
