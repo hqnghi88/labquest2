@@ -103,7 +103,7 @@ public class LabQuest2 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(connectButton.getText().equals("Connect")){
-				 arduino = new Arduino(portList.getSelectedItem().toString(),4800);
+				 arduino = new Arduino(portList.getSelectedItem().toString(),9600);
 				 if(arduino.openConnection()){
 					 connectButton.setText("Disconnect");
 					 portList.setEnabled(false);
