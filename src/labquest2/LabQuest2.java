@@ -50,7 +50,7 @@ public class LabQuest2 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[]", "[]"));
 //
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //		frame.setUndecorated(true);
 		JButton btnStartAnalysis = new JButton("Start Analysis");
 		btnStartAnalysis.addActionListener(new ActionListener() {
