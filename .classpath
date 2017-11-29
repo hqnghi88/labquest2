@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
 	<classpathentry exported="true" kind="lib" path="jfreechart 1.0.19/jars/jcommon-1.0.23.jar"/>
 	<classpathentry exported="true" kind="lib" path="jfreechart 1.0.19/jars/jfreechart-1.0.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/arduino.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jSerialComm-1.3.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

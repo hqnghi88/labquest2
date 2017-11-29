@@ -25,6 +25,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 
+import arduino.Arduino;
 import net.miginfocom.swing.MigLayout;
 
 public class LineChartSample extends JFrame {
@@ -35,9 +36,17 @@ public class LineChartSample extends JFrame {
 	// 2, 3 } };
 	int i = 0;
 
+	double temperature=0.0f;
 	private XYDataset createDataset() {
 		a.add((double) i);
-		b.add(Math.random());
+		if(LabQuest2.arduino!=null) {
+			try {
+				temperature=Double.parseDouble(LabQuest2.arduino.serialRead(0));				
+			}catch(Exception ex) {
+				
+			}
+		}
+		b.add(temperature);
 		DefaultXYDataset ds = new DefaultXYDataset();
 		double[][] data = { extractArray(a), extractArray(b) };
 		i++;
@@ -69,8 +78,11 @@ public class LineChartSample extends JFrame {
 		URL obj;
 		try {
 			obj = new URL(url);
-			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.18.72.17", 3128));
-			HttpURLConnection con = (HttpURLConnection) obj.openConnection(proxy);
+//			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.18.72.17", 3128));
+//			HttpURLConnection con = (HttpURLConnection) obj.openConnection(proxy);
+			
+
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			
 			// add reuqest header
 			con.setRequestMethod("POST");
@@ -78,7 +90,7 @@ public class LineChartSample extends JFrame {
 			con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-			String urlParameters = "StationID=TQT1&TMP=224&token=Nguyen@Trung@Truc";
+			String urlParameters = "StationID=TQT1&TMP="+temperature+"&token=Nguyen@Trung@Truc";
 
 			// Send post request
 			con.setDoOutput(true);
@@ -129,7 +141,7 @@ public class LineChartSample extends JFrame {
 			}
 		});
 		getContentPane().add(btnStartAnalysis);// , "cell 0 0");
-		// setExtendedState(JFrame.MAXIMIZED_BOTH);
+		 setExtendedState(JFrame.MAXIMIZED_BOTH);
 		// setUndecorated(true);
 		XYDataset ds = createDataset();
 		JFreeChart chart = ChartFactory.createXYLineChart("Analysis Chart", "time", "degree C", ds,
