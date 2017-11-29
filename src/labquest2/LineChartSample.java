@@ -42,7 +42,6 @@ public class LineChartSample extends JFrame {
 		if(LabQuest2.arduino!=null) {
 			try {
 				temperature=Double.parseDouble(LabQuest2.arduino.serialRead(0));	
-				this.setTitle(""+temperature);
 			}catch(Exception ex) {
 				
 			}
